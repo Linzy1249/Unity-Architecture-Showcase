@@ -64,18 +64,12 @@ namespace UnityArchitectureShowcase.UI
 
             if (!isInit)
             {
-                // AnalyticsHelper.instance.Setup(); // AppData 中的部分欄位需要在 MainPage 的腳本中初始化，因此必須等待頁面切換完成才能呼叫
-
-                // await ShowAgreement();    // 用戶協議
-                // await ShowAnnouncement(); // 公告
-
-                // ProcessDeepLinkMngr.instance.Setup();
+                // todo   
             }
-            // SetAccountUIStatus();
-
             isInit = true;
         }
 
+        // ===== 切換頁面相關 =====
         private void ChangeToLastView()
         {
             if (viewDatas.Count <= 0)
@@ -105,7 +99,7 @@ namespace UnityArchitectureShowcase.UI
             }
         }
 
-        private T ChangeToView<T>(ViewType nextView, Transform root = null, int sort = -1, bool isHide = true) where T : BasicView
+        private T ChangeToView<T>(ViewType nextView, int sort = -1, bool isHide = true) where T : BasicView
         {
             if (!isStaticMethod && currentView == nextView) // 從靜態呼叫的頁面可以忽略相同介面
                 return null;
@@ -117,7 +111,7 @@ namespace UnityArchitectureShowcase.UI
                     lastView.Dispose(isHide);
                 }
             }
-            if (isSaveViewData && currentView != nextView) // 當前Studio沒有一個固定的首頁，因此類型為None時也會記錄
+            if (isSaveViewData && currentView != nextView)
             {
                 viewDatas.Add(new ViewData
                 {

@@ -100,7 +100,7 @@ namespace UnityArchitectureShowcase.UI
             return ChangeToView<SplashView>(ViewType.SplashView);
         }
 
-        private T ChangeToView<T>(ViewType nextView, Transform root = null, int sort = -1, bool isHide = true) where T : BasicView
+        private T ChangeToView<T>(ViewType nextView, int sort = -1, bool isHide = true) where T : BasicView
         {
             if (!isStaticMethod && currentView == nextView) // 從靜態呼叫的頁面可以忽略相同介面
                 return null;
@@ -112,7 +112,7 @@ namespace UnityArchitectureShowcase.UI
                     lastView.Dispose(isHide);
                 }
             }
-            if (isSaveViewData && currentView != nextView) // 當前Studio沒有一個固定的首頁，因此類型為None時也會記錄
+            if (isSaveViewData && currentView != nextView)
             {
                 viewDatas.Add(new ViewData
                 {

@@ -21,6 +21,7 @@ namespace UnityArchitectureShowcase.UI
             states = new Dictionary<string, IState>
             {
                 { nameof(State.InitialState), new InitialState() },
+                { nameof(State.HomeState), new HomeState() }
             };
         }
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace AR2VR.UI
+namespace UnityArchitectureShowcase.UI
 {
     public abstract class ScrollItem : MonoBehaviour
     {

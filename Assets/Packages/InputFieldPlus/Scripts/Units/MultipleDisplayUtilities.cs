@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace AR2VR.UI
+namespace UnityArchitectureShowcase.UI
 {
     internal static class MultipleDisplayUtilities
     {

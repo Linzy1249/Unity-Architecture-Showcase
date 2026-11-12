@@ -10,7 +10,7 @@ using UnityEngine.UI;
 using UnityEditor;
 #endif
 
-namespace AR2VR.UI
+namespace UnityArchitectureShowcase.UI
 {
     /// <summary>
     /// Turn a simple label into a interactable input field. ver Unity2019

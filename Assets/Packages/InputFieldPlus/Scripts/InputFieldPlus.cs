@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace AR2VR.UI
+namespace UnityArchitectureShowcase.UI
 {
     public class InputFieldPlus : InputField
     {

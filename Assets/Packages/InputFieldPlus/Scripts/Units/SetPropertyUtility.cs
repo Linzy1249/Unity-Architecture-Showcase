@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace AR2VR.UI
+namespace UnityArchitectureShowcase.UI
 {
     internal static class SetPropertyUtility
     {

@@ -3,7 +3,7 @@ using UnityEditor.AnimatedValues;
 using UnityEditor.UI;
 using UnityEngine.UI;
 
-namespace AR2VR.UI
+namespace UnityArchitectureShowcase.UI
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(InputFieldBase), true)]

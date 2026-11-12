@@ -13,6 +13,7 @@ namespace UnityArchitectureShowcase.UI
         private enum ViewType
         {
             None = -1,
+            HomeView
         }
 
         private class ViewData
@@ -62,14 +63,27 @@ namespace UnityArchitectureShowcase.UI
         {
             instance = this;
 
+            ChangeToHomeView();
+
             if (!isInit)
             {
-                // todo   
+                // todo
             }
             isInit = true;
         }
 
         // ===== 切換頁面相關 =====
+        private HomeView ChangeToHomeView()
+        {
+            var view = ChangeToView<HomeView>(ViewType.HomeView);
+
+            if (view != null)
+            {
+                // 
+            }
+            return view;
+        }
+
         private void ChangeToLastView()
         {
             if (viewDatas.Count <= 0)

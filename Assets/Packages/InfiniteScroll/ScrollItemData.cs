@@ -1,4 +1,4 @@
-﻿namespace AR2VR.UI
+﻿namespace UnityArchitectureShowcase.UI
 {
     public class ScrollItemData
     {

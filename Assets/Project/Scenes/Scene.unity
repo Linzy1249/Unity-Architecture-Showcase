@@ -166,6 +166,7 @@ MonoBehaviour:
   canvas: {fileID: 1294676959}
   basicViews:
   - {fileID: 4053836320871216622, guid: 0707c042dcf7a437694a8655dc8f839c, type: 3}
+  - {fileID: 541991700903784913, guid: 3cc507aa7901e4b5aaa653bab42fa60e, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AR2VR.UI
+namespace UnityArchitectureShowcase.UI
 {
     // TODO : handle if datum updated in runtime
     public class ScrollContent : MonoBehaviour

@@ -35,9 +35,13 @@ namespace UnityArchitectureShowcase.UI
         private List<ViewData> viewDatas = new List<ViewData>();
         private Dictionary<ViewType, BasicView> viewDictionary = new Dictionary<ViewType, BasicView>();
 
+        private InitialModel model = new InitialModel(); // 儲存、取得資料用
+
         public void OnDispose()
         {
             instance = null;
+
+            model.Dispose();
 
             for (int i = 0; i < viewDictionary.Count; i++)
             {
@@ -103,7 +107,13 @@ namespace UnityArchitectureShowcase.UI
 
         private SplashView ChangeToSplashView()
         {
-            return ChangeToView<SplashView>(ViewType.SplashView);
+            var view = ChangeToView<SplashView>(ViewType.SplashView);
+
+            if (view != null)
+            {
+                // todo 如果介面有需要做其他設定的話在此呼叫
+            }
+            return view;
         }
 
         private T ChangeToView<T>(ViewType nextView, int sort = -1, bool isHide = true) where T : BasicView
@@ -159,7 +169,7 @@ namespace UnityArchitectureShowcase.UI
             {
                 // 不需要顯示Loading，而是直接顯示SplashView
 
-                await APISender.instance.GetSystemConfig();
+                await model.GetSystemConfig();
             }
             catch (HttpRequestException)
             {

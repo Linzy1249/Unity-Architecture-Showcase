@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using UnityArchitectureShowcase.Network;
 using UnityEngine;
 
 namespace UnityArchitectureShowcase.UI
@@ -62,16 +65,19 @@ namespace UnityArchitectureShowcase.UI
 
             if (!isInit)
             {
-                SetupSettings();
+                var splashTask = Task.Delay(3000); // 開始倒數三秒
 
-                await GetSystemConfig();
+                SetSettings();
+
+                await GetSystemConfig(); // 呼叫系統設定API
+                await splashTask;        // SplashView預計最短等待三秒，如果GetSystemConfig等待超過三秒的話，這段就會立刻跳過
             }
             ChangeToHomePage();
 
             isInit = true;
         }
 
-        private void SetupSettings()
+        private void SetSettings()
         {
             Application.targetFrameRate = 60;
             QualitySettings.vSyncCount = 0;
@@ -149,7 +155,28 @@ namespace UnityArchitectureShowcase.UI
         // ===== 取得資料相關 =====
         private async Task GetSystemConfig()
         {
-            await Task.Delay(1000); // 1s
+            try
+            {
+                // 不需要顯示Loading，而是直接顯示SplashView
+
+                await APISender.instance.GetSystemConfig();
+            }
+            catch (HttpRequestException)
+            {
+                // todo 網路異常
+            }
+            catch (GetResponseException)
+            {
+                // todo 伺服器異常
+            }
+            catch (Exception)
+            {
+                // todo 未知異常
+            }
+            finally
+            {
+                // 因應不顯示Loading，因此也不需要隱藏
+            }
         }
     }
 }

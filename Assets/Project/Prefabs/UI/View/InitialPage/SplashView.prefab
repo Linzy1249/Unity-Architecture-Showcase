@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c50e0d1f0e547e6a663c2f0ba3e688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  logoGroup: {fileID: 8385249889194183056}
 --- !u!1 &4713936757703812232
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +180,7 @@ GameObject:
   - component: {fileID: 2274128062993731374}
   - component: {fileID: 2240889970969696992}
   - component: {fileID: 2959837144272013888}
+  - component: {fileID: 8385249889194183056}
   m_Layer: 5
   m_Name: Logo
   m_TagString: Untagged
@@ -260,6 +262,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!225 &8385249889194183056
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466996252016136873}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5882489938409213177
 GameObject:
   m_ObjectHideFlags: 0

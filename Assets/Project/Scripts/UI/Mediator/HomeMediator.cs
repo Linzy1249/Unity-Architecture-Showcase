@@ -101,6 +101,9 @@ namespace UnityArchitectureShowcase.UI
                     case ViewType.None:
                         ChangeToView<BasicView>(ViewType.None);
                         break;
+                    case ViewType.HomeView:
+                        ChangeToHomeView();
+                        break;
                 }
             }
             finally

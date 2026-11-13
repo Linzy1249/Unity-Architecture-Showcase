@@ -65,20 +65,24 @@ namespace UnityArchitectureShowcase.UI
         {
             instance = this;
 
-            ChangeToSplashView();
+            var splashView = ChangeToSplashView();
+            var splashTask = Task.Delay(3000);
 
             if (!isInit)
             {
-                var splashTask = Task.Delay(3000); // 開始倒數三秒
-
                 SetSettings();
 
                 await GetSystemConfig(); // 呼叫系統設定API
-                await splashTask;        // SplashView預計最短等待三秒，如果GetSystemConfig等待超過三秒的話，這段就會立刻跳過
+
+                isInit = true;
+            }
+            await splashTask; // SplashView預計最短等待三秒，如果GetSystemConfig等待超過三秒的話，這段就會立刻跳過
+
+            if (splashView != null)
+            {
+                await splashView.SetSplashEffect(false);
             }
             ChangeToHomePage();
-
-            isInit = true;
         }
 
         private void SetSettings()
@@ -97,6 +101,9 @@ namespace UnityArchitectureShowcase.UI
                     Debug.unityLogger.logEnabled = false;
                     break;
             }
+            var screenRatio = UIHelper.instance.GetScreenRatio();
+
+            UIHelper.instance.SetScreenRatio(screenRatio);
         }
 
         // ===== 切換頁面相關 =====
@@ -111,9 +118,38 @@ namespace UnityArchitectureShowcase.UI
 
             if (view != null)
             {
-                // todo 如果介面有需要做其他設定的話在此呼叫
+                view.SetSplashEffect(true); // 不需要await
             }
             return view;
+        }
+
+        private void ChangeToLastView()
+        {
+            if (viewDatas.Count <= 0)
+                return;
+
+            var index = viewDatas.Count - 1;
+            var viewData = viewDatas[index];
+
+            try
+            {
+                isSaveViewData = false;
+
+                switch (viewData.viewType)
+                {
+                    case ViewType.None:
+                        ChangeToView<BasicView>(ViewType.None);
+                        break;
+                }
+            }
+            finally
+            {
+                if (viewDatas.Count > index)
+                {
+                    viewDatas.RemoveAt(index);
+                }
+                isSaveViewData = true;
+            }
         }
 
         private T ChangeToView<T>(ViewType nextView, int sort = -1, bool isHide = true) where T : BasicView

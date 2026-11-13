@@ -958,6 +958,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574f34e271a0946afacdcd2ff95b5581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomeViewLayout
+  topAreaElement: {fileID: 6944190545569693419}
+  mainGroup: {fileID: 4887125074391349889}
 --- !u!223 &1280437448517187991
 Canvas:
   m_ObjectHideFlags: 0
